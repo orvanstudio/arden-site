@@ -1,0 +1,1097 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arden Zoa — Bespoke Cinema VFX</title>
+  <meta name="description" content="Visual effects supervision and bespoke shot finishing for independent cinema, narrative shorts, and directors. Direct collaboration, zero studio bloat.">
+
+  <!-- Solid Round Orange Circle Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23ff4d15'/%3E%3C/svg%3E">
+
+  <!-- Clean Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070709;
+      --surface: #0f1015;
+      --surface-elevated: #151720;
+      --surface-hover: #1c1e29;
+      --border: rgba(255, 255, 255, 0.09);
+      --border-light: rgba(255, 255, 255, 0.18);
+      --fg: #f5f5f7;
+      --muted: #848796;
+      --muted-dark: #505362;
+      
+      /* Fiery Orange Accent Palette */
+      --fire: #ff4d15;
+      --fire-hover: #ff6636;
+      --fire-glow: rgba(255, 77, 21, 0.35);
+      --fire-subtle: rgba(255, 77, 21, 0.09);
+
+      /* Tactical Stealth Cyan for NDA Cards */
+      --nda-cyan: #38bdf8;
+      --nda-cyan-glow: rgba(56, 189, 248, 0.3);
+      --nda-bg: #0b111a;
+      
+      --radius-card: 20px;
+      --radius-box: 14px;
+      --radius-pill: 999px;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Warm Glow */
+    .ambient-glow {
+      position: fixed;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(320px, 80vw, 750px);
+      height: 480px;
+      background: radial-gradient(circle, rgba(255, 77, 21, 0.15) 0%, rgba(255, 102, 54, 0.03) 50%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation */
+    header {
+      padding: 24px 0 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 16, 21, 0.75);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 8px 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--fg);
+    }
+
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      background: var(--fire);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--fire);
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .status-pill {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      display: none;
+    }
+
+    @media (min-width: 600px) {
+      .status-pill { display: inline-block; }
+    }
+
+    .btn-nav {
+      background: var(--fire);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      box-shadow: 0 2px 10px var(--fire-glow);
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:hover {
+      background: var(--fire-hover);
+      box-shadow: 0 4px 16px var(--fire-glow);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 32px;
+      text-align: center;
+    }
+
+    .hero-meta {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--fire);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--fire-subtle);
+      border: 1px solid rgba(255, 77, 21, 0.25);
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5.5vw, 60px);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(120deg, #ff8b52, var(--fire));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 19px);
+      max-width: 620px;
+      margin: 0 auto 30px;
+      line-height: 1.55;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-fire {
+      background: var(--fire);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 32px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px var(--fire-glow);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-fire:hover {
+      background: var(--fire-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 77, 21, 0.5);
+    }
+
+    /* PROMINENT STUDIO BOXES TICKER */
+    .brand-ticker-section {
+      margin: 40px 0 54px;
+    }
+
+    .ticker-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding: 0 4px;
+    }
+
+    .ticker-label {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fire);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ticker-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--nda-cyan);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ticker-sub::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--nda-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--nda-cyan);
+    }
+
+    .ticker-viewport {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      padding: 10px 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      gap: 16px;
+      animation: scroll 32s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Standard Studio Box (Orange Theme) */
+    .studio-box {
+      width: 220px;
+      height: 84px;
+      background: linear-gradient(145deg, var(--surface-elevated) 0%, var(--surface) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-box);
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .studio-box:hover {
+      border-color: rgba(255, 77, 21, 0.45);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), 0 0 15px var(--fire-glow);
+    }
+
+    .box-category {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fire);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .box-name {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+
+    /* DISTINCT NDA CARDS (Tactical Stealth Cyan) */
+    .studio-box.confidential {
+      background: linear-gradient(145deg, #0e141f 0%, #070a0e 100%);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+    }
+
+    .studio-box.confidential:hover {
+      border-color: var(--nda-cyan);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6), 0 0 18px var(--nda-cyan-glow);
+    }
+
+    .studio-box.confidential .box-category {
+      color: var(--nda-cyan);
+    }
+
+    .studio-box.confidential .box-name {
+      font-size: 16.5px;
+      color: #e0f2fe;
+    }
+
+    .confidential-tag {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--nda-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--nda-cyan);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Auto-Sliding VFX Plate Container */
+    .slider-wrap {
+      margin: 10px 0 54px;
+    }
+
+    .viewport {
+      position: relative;
+      width: 100%;
+      height: clamp(290px, 46vw, 440px);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+      user-select: none;
+      -webkit-user-select: none;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      cursor: ew-resize;
+      touch-action: pan-y;
+    }
+
+    .layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* High-Res Online Plates & Fallback Vectors */
+    .shot-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    svg.shot-vector {
+      width: 100%;
+      height: 100%;
+      display: none; /* Shows only if offline or image fails */
+      object-fit: cover;
+    }
+
+    /* Left-side Overlay Layer (Displays BEFORE on the LEFT) */
+    .layer-before-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      border-right: 2px solid var(--fire);
+      box-shadow: 0 0 16px var(--fire);
+      z-index: 2;
+    }
+
+    .layer-before-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      min-width: 960px; /* Synchronized via JS */
+    }
+
+    .slider-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .handle-nub {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--fire);
+      box-shadow: 0 0 16px var(--fire);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .hud-tag {
+      position: absolute;
+      bottom: 14px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 5;
+    }
+
+    .hud-left { left: 16px; color: #ff8b66; }
+    .hud-right { right: 16px; color: #93c5fd; }
+
+    /* 4 Core Focus Areas (Rounded Cards) */
+    .focus-section {
+      padding: 20px 0 54px;
+    }
+
+    .focus-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .focus-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+    }
+
+    .focus-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      transition: all 0.2s ease;
+    }
+
+    .focus-item:hover {
+      border-color: rgba(255, 77, 21, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .focus-item h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .focus-item p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* "Why We Talk First" Banner */
+    .intake-banner {
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(15, 16, 21, 0.6) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 34px 30px;
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 720px) {
+      .intake-banner { grid-template-columns: 1fr; gap: 20px; padding: 24px; }
+    }
+
+    .intake-banner h2 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .intake-banner p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .studio-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--fire);
+      margin-bottom: 10px;
+    }
+
+    /* Direct Connect Section */
+    .connect-module {
+      border: 1px solid rgba(255, 77, 21, 0.28);
+      background: radial-gradient(circle at 50% 0%, var(--fire-subtle) 0%, var(--surface) 75%);
+      border-radius: var(--radius-card);
+      padding: 42px 24px;
+      text-align: center;
+      margin-bottom: 54px;
+    }
+
+    .connect-module h2 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.5vw, 34px);
+      margin-bottom: 10px;
+    }
+
+    .connect-module p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto 26px;
+    }
+
+    .direct-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      color: #000;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 30px;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    .email-btn:hover {
+      background: var(--fire);
+      color: #fff;
+      box-shadow: 0 0 25px var(--fire-glow);
+    }
+
+    .copy-pill {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-pill:hover {
+      border-color: var(--fire);
+      color: var(--fg);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      font-size: 13px;
+      color: var(--muted-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    footer a:hover {
+      color: var(--fire);
+    }
+
+    /* SVG utility */
+    .icon {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div class="wrap">
+
+    <!-- Header -->
+    <header>
+      <div class="nav-bar">
+        <a href="#" class="brand">
+          <div class="brand-mark"></div>
+          <span class="brand-title">Arden Zoa</span>
+        </a>
+
+        <div class="nav-actions">
+          <span class="status-pill">Available for Q2/Q3 Shots</span>
+          <a href="#connect" class="btn-nav">Send a Cut</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-meta">Bespoke Visual Effects &bull; Independent Cinema</div>
+      <h1>
+        Cinema VFX for your story.<br>
+        <em>Let’s talk through the frame.</em>
+      </h1>
+      <p class="hero-sub">
+        Direct VFX supervision and high-end shot craft for independent directors and producers. No agency bloat, no arbitrary rate cards—just an honest conversation to bring your vision across the line.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#connect" class="btn-fire">
+          <span>Talk With Arden</span>
+          <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- PROMINENT STUDIO BOXES TICKER -->
+    <div class="brand-ticker-section">
+      <div class="ticker-header">
+        <span class="ticker-label">Networks, Studios &amp; Select Productions</span>
+        <span class="ticker-sub">6 Confidential NDA Projects</span>
+      </div>
+
+      <div class="ticker-viewport">
+        <div class="ticker-track">
+          
+          <!-- Box 1: DStv -->
+          <div class="studio-box">
+            <span class="box-category">Broadcast Network</span>
+            <span class="box-name">DStv</span>
+          </div>
+
+          <!-- Box 2: Showmax -->
+          <div class="studio-box">
+            <span class="box-category">Streaming Original</span>
+            <span class="box-name">Showmax</span>
+          </div>
+
+          <!-- Box 3: Pearl Magic -->
+          <div class="studio-box">
+            <span class="box-category">Premium Television</span>
+            <span class="box-name">Pearl Magic</span>
+          </div>
+
+          <!-- Box 4: Dolmen Films -->
+          <div class="studio-box">
+            <span class="box-category">Feature Production</span>
+            <span class="box-name">Dolmen Films</span>
+          </div>
+
+          <!-- Box 5: Orvan Studios -->
+          <div class="studio-box">
+            <span class="box-category">Creative Studio</span>
+            <span class="box-name">Orvan Studios</span>
+          </div>
+
+          <!-- Distinct NDA Project 1 (Tactical Cyan) -->
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Feature Film</span>
+          </div>
+
+          <!-- Distinct NDA Project 2 -->
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Sci-Fi Pilot</span>
+          </div>
+
+          <!-- Distinct NDA Project 3 -->
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Theatrical Teaser</span>
+          </div>
+
+          <!-- Distinct NDA Project 4 -->
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Premium Series</span>
+          </div>
+
+          <!-- Distinct NDA Project 5 -->
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Global Campaign</span>
+          </div>
+
+          <!-- Distinct NDA Project 6 -->
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Docuseries Grade</span>
+          </div>
+
+          <!-- DUPLICATE LOOP FOR SEAMLESS 100% INFINITE SCROLL -->
+          <div class="studio-box">
+            <span class="box-category">Broadcast Network</span>
+            <span class="box-name">DStv</span>
+          </div>
+
+          <div class="studio-box">
+            <span class="box-category">Streaming Original</span>
+            <span class="box-name">Showmax</span>
+          </div>
+
+          <div class="studio-box">
+            <span class="box-category">Premium Television</span>
+            <span class="box-name">Pearl Magic</span>
+          </div>
+
+          <div class="studio-box">
+            <span class="box-category">Feature Production</span>
+            <span class="box-name">Dolmen Films</span>
+          </div>
+
+          <div class="studio-box">
+            <span class="box-category">Creative Studio</span>
+            <span class="box-name">Orvan Studios</span>
+          </div>
+
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Feature Film</span>
+          </div>
+
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Sci-Fi Pilot</span>
+          </div>
+
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Theatrical Teaser</span>
+          </div>
+
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Premium Series</span>
+          </div>
+
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Global Campaign</span>
+          </div>
+
+          <div class="studio-box confidential">
+            <span class="box-category"><span class="confidential-tag"></span>NDA Restricted</span>
+            <span class="box-name">Docuseries Grade</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Auto-Sliding VFX Plate (BEFORE ON LEFT // AFTER ON RIGHT) -->
+    <div class="slider-wrap">
+      <div class="viewport" id="viewport">
+        
+        <!-- BASE LAYER: Final Composite (Revealed on the RIGHT) -->
+        <div class="layer layer-after-base">
+          <img src="https://cdnb.artstation.com/p/assets/images/images/066/772/903/large/patrick-chris-black-test-comps-03.jpg?1693750881" 
+               alt="After VFX - Final Finished Composite" 
+               class="shot-img"
+               draggable="false"
+               onerror="this.style.display='none'; document.getElementById('compFallback').style.display='block';">
+
+          <!-- Offline Vector Fallback -->
+          <svg id="compFallback" class="shot-vector" viewBox="0 0 940 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="emberWrap" cx="710" cy="130" r="160" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ff4d15" stop-opacity="0.85"/>
+                <stop offset="45%" stop-color="#ff2600" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#070709" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="940" height="420" fill="#070709"/>
+            <path d="M0 0h940v290H0z" fill="#0c0e14"/>
+            <circle cx="710" cy="130" r="160" fill="url(#emberWrap)"/>
+            <circle cx="710" cy="130" r="34" fill="#ffb499"/>
+            <path d="M0 330q235-30 470 0t470-10v100H0z" fill="#040507"/>
+            <path d="M420 330c12-55 45-75 55-75s43 20 55 75z" fill="#040507"/>
+            <circle cx="475" cy="235" r="15" fill="#040507"/>
+            <ellipse cx="710" cy="130" rx="230" ry="2" fill="#ff7742" opacity="0.8"/>
+          </svg>
+
+          <span class="hud-tag hud-right">FINAL COMP // AFTER</span>
+        </div>
+
+        <!-- OVERLAY LAYER: Raw Camera Plate (Clipped from Left 0% to Divider Position) -->
+        <div class="layer-before-overlay" id="beforeLayer">
+          <div class="layer-before-inner" id="beforeInner">
+            <img src="https://cdnb.artstation.com/p/assets/images/images/066/773/099/large/patrick-chris-black-raw.jpg?1693751163" 
+                 alt="Before VFX - Raw Camera Plate" 
+                 class="shot-img"
+                 draggable="false"
+                 onerror="this.style.display='none'; document.getElementById('rawFallback').style.display='block';">
+            
+            <!-- Offline Vector Fallback -->
+            <svg id="rawFallback" class="shot-vector" viewBox="0 0 940 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <rect width="940" height="420" fill="#14171d"/>
+              <path d="M0 0h940v290H0z" fill="#1c202a"/>
+              <circle cx="710" cy="130" r="50" fill="#2a303e"/>
+              <path d="M420 330c12-55 45-75 55-75s43 20 55 75z" fill="#0d0e12"/>
+              <circle cx="475" cy="235" r="15" fill="#0d0e12"/>
+              <path d="M0 330q235-30 470 0t470-10v100H0z" fill="#0a0b0e"/>
+              <rect x="520" y="85" width="140" height="34" rx="6" fill="rgba(255,77,21,0.12)" stroke="#ff4d15" stroke-dasharray="4"/>
+              <text x="530" y="107" fill="#ff8b66" font-family="'JetBrains Mono', monospace" font-size="11">● BOOM &amp; RIG CABLE</text>
+            </svg>
+          </div>
+          <span class="hud-tag hud-left">RAW PLATE // BEFORE</span>
+        </div>
+
+        <!-- Slider Divider & Handle -->
+        <div class="slider-handle" id="handle">
+          <div class="handle-nub">
+            <svg class="icon" viewBox="0 0 24 24" style="width: 12px; height: 12px;">
+              <polyline points="15 18 9 12 15 6"></polyline>
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Core Focus Areas -->
+    <section class="focus-section">
+      <div class="focus-title">Shot Craft Specialties</div>
+      <div class="focus-list">
+        <div class="focus-item">
+          <h3>01 / Wire &amp; Rig Removal</h3>
+          <p>Seamless paintouts for harnesses, boom arms, reflections, and tracking markers with exact camera-noise match.</p>
+        </div>
+        <div class="focus-item">
+          <h3>02 / Chroma &amp; Compositing</h3>
+          <p>Clean hair retention, edge atmospheric wrap, spill neutralization, and natural depth-of-field integration.</p>
+        </div>
+        <div class="focus-item">
+          <h3>03 / Screens &amp; Displays</h3>
+          <p>Planar-tracked phone, monitor, and HUD inserts featuring realistic glass glare, roll-off, and finger occlusions.</p>
+        </div>
+        <div class="focus-item">
+          <h3>04 / Invisible Fixes</h3>
+          <p>Saved in post: unwanted logo paintouts, blemish fixes, practical muzzle flashes, and theatrical final polish.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why We Talk First -->
+    <div class="intake-banner">
+      <div>
+        <span class="studio-pill">ALLIANCE WITH X HELIUM ARRAY STUDIO</span>
+        <h2>Why we talk before quoting.</h2>
+        <p>
+          Every script has unique needs. An isolated boom removal might take an afternoon, while a moving anamorphic plate requires custom lens modeling. 
+        </p>
+      </div>
+      <div>
+        <p>
+          Throwing arbitrary prices at a client usually results in overpaying or compromised craft. We review your clip together first, identify the simplest route, and give you a fixed quote that fits your real indie budget.
+        </p>
+      </div>
+    </div>
+
+    <!-- Direct Connect Section -->
+    <section id="connect" class="connect-module">
+      <h2>Have a shot that needs looking at?</h2>
+      <p>
+        Send a Frame.io, Dropbox, or WeTransfer link. You will hear back directly from Arden within 24 hours with a clear assessment.
+      </p>
+
+      <div class="direct-actions">
+        <a href="mailto:orvanstudiomax@gmail.com?subject=VFX%20Review%20for%20Arden%20Zoa&body=Hi%20Arden%2C%0A%0AWe%20have%20a%20project%20in%20post%20and%20would%20love%20your%20eyes%20on%20a%20shot.%0A%0AProject%20Type%20(Feature%20%2F%20Short%20%2F%20Music%20Video)%3A%20%0ALink%20to%20clip%20or%20plate%3A%20%0ADeadline%20notes%3A%20" class="email-btn">
+          <span>Email Your Clip to Arden</span>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+
+        <button class="copy-pill" id="copyBtn" onclick="copyEmail()">
+          Copy address: orvanstudiomax@gmail.com
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div>
+        &copy; <span id="year"></span> Arden Zoa &bull; Supervised in alliance with X Helium Array Studio
+      </div>
+      <div>
+        <a href="mailto:orvanstudiomax@gmail.com">orvanstudiomax@gmail.com</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Auto-Sliding & Interactive Before/After Logic
+    const viewport = document.getElementById('viewport');
+    const beforeLayer = document.getElementById('beforeLayer');
+    const beforeInner = document.getElementById('beforeInner');
+    const handle = document.getElementById('handle');
+
+    let isUserInteracting = false;
+    let autoSlideActive = true;
+    let currentPct = 50;
+    let animPhase = 0;
+    let resumeTimer = null;
+
+    function resizeInner() {
+      if (beforeInner && viewport) {
+        beforeInner.style.width = viewport.offsetWidth + 'px';
+      }
+    }
+    window.addEventListener('resize', resizeInner);
+    resizeInner();
+
+    function setDividerPos(pct) {
+      currentPct = Math.max(5, Math.min(95, pct));
+      beforeLayer.style.width = currentPct + '%';
+      handle.style.left = currentPct + '%';
+    }
+
+    // Smooth auto-slide loop using a gentle sine wave
+    function tickAutoSlide() {
+      if (autoSlideActive && !isUserInteracting) {
+        animPhase += 0.009;
+        const calculated = 50 + (Math.sin(animPhase) * 28);
+        setDividerPos(calculated);
+      }
+      requestAnimationFrame(tickAutoSlide);
+    }
+    requestAnimationFrame(tickAutoSlide);
+
+    function handlePointer(clientX) {
+      const rect = viewport.getBoundingClientRect();
+      const pct = ((clientX - rect.left) / rect.width) * 100;
+      setDividerPos(pct);
+    }
+
+    function pauseAndTrack(clientX) {
+      isUserInteracting = true;
+      autoSlideActive = false;
+      clearTimeout(resumeTimer);
+      handlePointer(clientX);
+    }
+
+    function scheduleResume() {
+      isUserInteracting = false;
+      clearTimeout(resumeTimer);
+      // Wait 2.2 seconds after release, then smoothly resume auto-slide
+      resumeTimer = setTimeout(() => {
+        const clampedVal = Math.max(-1, Math.min(1, (currentPct - 50) / 28));
+        animPhase = Math.asin(clampedVal);
+        autoSlideActive = true;
+      }, 2200);
+    }
+
+    // Mouse Events
+    viewport.addEventListener('mousedown', (e) => {
+      pauseAndTrack(e.clientX);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (isUserInteracting) handlePointer(e.clientX);
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isUserInteracting) scheduleResume();
+    });
+
+    // Touch Events (Mobile & Tablet)
+    viewport.addEventListener('touchstart', (e) => {
+      pauseAndTrack(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (isUserInteracting) handlePointer(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      if (isUserInteracting) scheduleResume();
+    });
+
+    // 1-Click Copy Email function
+    function copyEmail() {
+      const email = 'orvanstudiomax@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied to clipboard!';
+        btn.style.color = '#ff4d15';
+        setTimeout(() => {
+          btn.textContent = 'Copy address: ' + email;
+          btn.style.color = '';
+        }, 2200);
+      });
+    }
+  </script>
+</body>
+</html>
