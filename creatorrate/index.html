@@ -1,201 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CreatorRate — Stop Guessing Your Rates. Start Charging What You're Worth.</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        h1 { font-size: 2.5em; margin-bottom: 10px; color: #fff; }
-        .subtitle { font-size: 1.2em; color: #888; margin-bottom: 40px; }
-        .calculator { background: #1a1a1a; border-radius: 12px; padding: 30px; margin-bottom: 30px; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: #ccc; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #333; border-radius: 6px; background: #2a2a2a; color: #fff; font-size: 16px; }
-        input:focus, select:focus { outline: none; border-color: #4CAF50; }
-        .result { background: #2a2a2a; border-radius: 8px; padding: 20px; margin-top: 20px; display: none; }
-        .result h3 { color: #4CAF50; margin-bottom: 15px; }
-        .price { font-size: 2em; font-weight: bold; color: #4CAF50; margin: 10px 0; }
-        .breakdown { margin-top: 15px; font-size: 0.9em; color: #888; }
-        .btn { background: #4CAF50; color: white; padding: 15px 30px; border: none; border-radius: 6px; font-size: 18px; cursor: pointer; width: 100%; margin-top: 20px; }
-        .btn:hover { background: #45a049; }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
-        .feature { background: #1a1a1a; padding: 20px; border-radius: 8px; }
-        .feature h3 { color: #4CAF50; margin-bottom: 10px; }
-        .pro-section { background: linear-gradient(135deg, #1a1a1a, #2a2a2a); padding: 30px; border-radius: 12px; margin-top: 40px; text-align: center; }
-        .pro-section h2 { color: #fff; margin-bottom: 15px; }
-        .pro-price { font-size: 2.5em; color: #4CAF50; font-weight: bold; margin: 20px 0; }
-        .pro-features { list-style: none; text-align: left; margin: 20px 0; }
-        .pro-features li { padding: 8px 0; border-bottom: 1px solid #333; }
-        .pro-features li:before { content: "✓ "; color: #4CAF50; font-weight: bold; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CreatorRate — Know What Your Video Work Is Actually Worth</title>
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --card: #141418;
+    --border: #2a2a32;
+    --accent: #6c5ce7;
+    --accent-light: #a29bfe;
+    --text: #e8e8ed;
+    --text-dim: #8888a0;
+    --success: #00b894;
+    --warn: #fdcb6e;
+    --danger: #e17055;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 720px; margin: 0 auto; padding: 20px; }
+  
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--accent-light), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 520px; margin: 0 auto; }
+  
+  /* Calculator Card */
+  .calc-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .calc-card h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8rem;
+  }
+  
+  /* Form */
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .field .hint {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  input[type="number"], select {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  
+  /* Results */
+  .results {
+    background: linear-gradient(135deg, #1a1a24, #141418);
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    display: none;
+  }
+  .results.visible { display: block; }
+  .results h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-light);
+    margin-bottom: 20px;
+  }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-label { color: var(--text-dim); font-size: 0.95rem; }
+  .result-value { font-weight: 700; font-size: 1rem; }
+  .result-value.highlight {
+    color: var(--accent-light);
+    font-size: 1.4rem;
+  }
+  .result-value.green { color: var(--success); }
+  .result-value.warn { color: var(--warn); }
+  .result-value.red { color: var(--danger); }
+  
+  .verdict {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(108, 92, 231, 0.1);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  
+  /* Button */
+  .btn {
+    display: inline-block;
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    font-family: inherit;
+  }
+  .btn:hover { background: #5a4bd4; }
+  .btn:active { transform: scale(0.98); }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  .footer a { color: var(--accent-light); text-decoration: none; }
+  
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .row { grid-template-columns: 1fr; }
+    .calc-card { padding: 24px; }
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>CreatorRate</h1>
-        <p class="subtitle">Stop guessing your rates. Start charging what you're worth.</p>
-        
-        <div class="calculator">
-            <h2 style="margin-bottom: 20px; color: #fff;">Project Rate Calculator</h2>
-            
-            <div class="form-group">
-                <label for="service">Service Type</label>
-                <select id="service">
-                    <option value="editing">Video Editing</option>
-                    <option value="motion">Motion Graphics</option>
-                    <option value="color">Color Grading</option>
-                    <option value="sound">Sound Design</option>
-                    <option value="vfx">VFX/Compositing</option>
-                    <option value="package">Full Post-Production Package</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="experience">Your Experience Level</label>
-                <select id="experience">
-                    <option value="junior">Junior (0-2 years)</option>
-                    <option value="mid">Mid-Level (2-5 years)</option>
-                    <option value="senior">Senior (5+ years)</option>
-                    <option value="expert">Expert/Specialist</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="projectLength">Project Length (minutes)</label>
-                <input type="number" id="projectLength" placeholder="e.g., 10" min="1" max="180">
-            </div>
-            
-            <div class="form-group">
-                <label for="complexity">Complexity Level</label>
-                <select id="complexity">
-                    <option value="simple">Simple (cuts, basic transitions)</option>
-                    <option value="moderate">Moderate (effects, graphics, color)</option>
-                    <option value="complex">Complex (VFX, multi-cam, heavy grading)</option>
-                    <option value="premium">Premium (broadcast/film quality)</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="revisions">Expected Revisions</label>
-                <select id="revisions">
-                    <option value="1">1 round</option>
-                    <option value="2">2 rounds</option>
-                    <option value="3">3 rounds</option>
-                    <option value="unlimited">Unlimited</option>
-                </select>
-            </div>
-            
-            <button class="btn" onclick="calculateRate()">Calculate My Rate</button>
-            
-            <div class="result" id="result">
-                <h3>Recommended Project Rate</h3>
-                <div class="price" id="price">$0</div>
-                <div class="breakdown" id="breakdown"></div>
-                <div style="margin-top: 15px; font-size: 0.85em; color: #666;">
-                    This is based on industry benchmarks for your experience level and project scope.
-                    Adjust based on your local market and client budget.
-                </div>
-            </div>
-        </div>
-        
-        <div class="features">
-            <div class="feature">
-                <h3>📊 Data-Driven</h3>
-                <p>Based on real industry rates from 2024-2025 freelance marketplaces and creator surveys.</p>
-            </div>
-            <div class="feature">
-                <h3>⚡ Instant Results</h3>
-                <p>Get accurate rate recommendations in seconds, not hours of research.</p>
-            </div>
-            <div class="feature">
-                <h3>🎯 Specific to You</h3>
-                <p>Accounts for your experience, project complexity, and service type.</p>
-            </div>
-        </div>
-        
-        <div class="pro-section">
-            <h2>CreatorRate Pro</h2>
-            <p>Unlock advanced features for serious professionals</p>
-            <div class="pro-price">$9/month</div>
-            <ul class="pro-features">
-                <li>Save unlimited project quotes</li>
-                <li>Export professional PDF proposals</li>
-                <li>Access rate benchmarks by region</li>
-                <li>Client comparison tool</li>
-                <li>Priority support</li>
-            </ul>
-            <button class="btn" style="max-width: 300px; margin: 20px auto; display: block;" onclick="window.location.href='mailto:chris@xheliumarray.com?subject=CreatorRate Pro Access Request'">
-                Get Pro Access
-            </button>
-        </div>
+
+<div class="hero">
+  <h1>Stop Guessing Your Rate</h1>
+  <p>Plug in your hours, expenses, and goals. Get a real per-project price — not a vibe.</p>
+</div>
+
+<div class="container">
+  
+  <div class="calc-card">
+    <h2>Your Numbers</h2>
+    
+    <div class="field">
+      <label>What do you do?</label>
+      <select id="service">
+        <option value="editing">Video Editing</option>
+        <option value="motion">Motion Graphics</option>
+        <option value="vfx">VFX / Compositing</option>
+        <option value="color">Color Grading</option>
+        <option value="sound">Sound Design / Mixing</option>
+        <option value="animation">2D/3D Animation</option>
+        <option value="general">General Creative Services</option>
+      </select>
     </div>
     
-    <script>
-        function calculateRate() {
-            const service = document.getElementById('service').value;
-            const experience = document.getElementById('experience').value;
-            const length = parseInt(document.getElementById('projectLength').value) || 10;
-            const complexity = document.getElementById('complexity').value;
-            const revisions = document.getElementById('revisions').value;
-            
-            // Base rates per minute by service type
-            const baseRates = {
-                editing: 15,
-                motion: 25,
-                color: 20,
-                sound: 18,
-                vfx: 35,
-                package: 45
-            };
-            
-            // Experience multipliers
-            const expMultipliers = {
-                junior: 0.7,
-                mid: 1.0,
-                senior: 1.4,
-                expert: 1.8
-            };
-            
-            // Complexity multipliers
-            const complexityMultipliers = {
-                simple: 0.8,
-                moderate: 1.0,
-                complex: 1.3,
-                premium: 1.6
-            };
-            
-            // Revision multipliers
-            const revisionMultipliers = {
-                '1': 1.0,
-                '2': 1.1,
-                '3': 1.2,
-                unlimited: 1.4
-            };
-            
-            // Calculate
-            let ratePerMinute = baseRates[service] * expMultipliers[experience] * complexityMultipliers[complexity] * revisionMultipliers[revisions];
-            let totalRate = ratePerMinute * length;
-            
-            // Minimum project fee
-            if (totalRate < 150) totalRate = 150;
-            
-            // Display results
-            document.getElementById('price').textContent = '$' + Math.round(totalRate);
-            document.getElementById('breakdown').innerHTML = `
-                <strong>Breakdown:</strong><br>
-                Base rate: $${baseRates[service]}/min<br>
-                Experience multiplier: ${expMultipliers[experience]}x<br>
-                Complexity multiplier: ${complexityMultipliers[complexity]}x<br>
-                Revision buffer: ${revisionMultipliers[revisions]}x<br>
-                Project length: ${length} minutes<br>
-                <br>
-                <strong>Hourly equivalent:</strong> $${Math.round(totalRate / (length * 0.1))}/hr
-            `;
-            
-            document.getElementById('result').style.display = 'block';
-        }
-    </script>
+    <div class="field">
+      <label>Your experience level</label>
+      <select id="level">
+        <option value="junior">Junior (0–2 years)</option>
+        <option value="mid" selected>Mid-Level (2–5 years)</option>
+        <option value="senior">Senior (5–10 years)</option>
+        <option value="expert">Expert / Specialist (10+ years)</option>
+      </select>
+    </div>
+    
+    <div class="row">
+      <div class="field">
+        <label>Hours per project</label>
+        <div class="hint">Realistic estimate including revisions</div>
+        <input type="number" id="hours" placeholder="e.g. 12" min="1" max="500" value="10">
+      </div>
+      <div class="field">
+        <label>Revisions expected</label>
+        <div class="hint">Number of revision rounds</div>
+        <input type="number" id="revisions" placeholder="e.g. 2" min="0" max="20" value="2">
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="field">
+        <label>Monthly expenses ($)</label>
+        <div class="hint">Software, hardware, internet, etc.</div>
+        <input type="number" id="expenses" placeholder="e.g. 300" min="0" value="200">
+      </div>
+      <div class="field">
+        <label>Target monthly income ($)</label>
+        <div class="hint">After expenses, what you take home</div>
+        <input type="number" id="income" placeholder="e.g. 5000" min="0" value="5000">
+      </div>
+    </div>
+    
+    <div class="field">
+      <label>Projects per month</label>
+      <div class="hint">How many you can realistically deliver</div>
+      <input type="number" id="projects" placeholder="e.g. 8" min="1" max="100" value="8">
+    </div>
+    
+    <button class="btn" onclick="calculate()">Calculate My Rate</button>
+  </div>
+  
+  <div class="results" id="results">
+    <h3>Your Pricing Breakdown</h3>
+    
+    <div class="result-row">
+      <span class="result-label">Effective hourly rate</span>
+      <span class="result-value" id="hourlyRate"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Minimum project price</span>
+      <span class="result-value highlight" id="projectPrice"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">With revision buffer (20%)</span>
+      <span class="result-value" id="bufferPrice"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Industry benchmark range</span>
+      <span class="result-value" id="benchmark"></span>
+    </div>
+    <div class="result-row">
+      <span class="result-label">Your price vs market</span>
+      <span class="result-value" id="marketPos"></span>
+    </div>
+    
+    <div class="verdict" id="verdict"></div>
+  </div>
+  
+</div>
+
+<div class="footer">
+  Built by <a href="https://orvanstudio.github.io/arden-site/">Arden Zoa</a> · No data stored · Run entirely in your browser<br>
+  <span style="margin-top:8px;display:inline-block;">Got a project? <a href="mailto:hello@xheliumarray.com">Get a quote</a></span>
+</div>
+
+<script>
+const rates = {
+  editing:   { junior: [25,45], mid: [45,85], senior: [85,150], expert: [150,300] },
+  motion:    { junior: [35,60], mid: [60,120], senior: [120,200], expert: [200,400] },
+  vfx:       { junior: [40,70], mid: [70,140], senior: [140,250], expert: [250,500] },
+  color:     { junior: [30,55], mid: [55,110], senior: [110,200], expert: [200,350] },
+  sound:     { junior: [25,50], mid: [50,100], senior: [100,180], expert: [180,350] },
+  animation: { junior: [35,65], mid: [65,130], senior: [130,220], expert: [220,450] },
+  general:   { junior: [25,50], mid: [50,100], senior: [100,180], expert: [180,350] }
+};
+
+function calculate() {
+  const service = document.getElementById('service').value;
+  const level = document.getElementById('level').value;
+  const hours = parseFloat(document.getElementById('hours').value) || 10;
+  const revisions = parseFloat(document.getElementById('revisions').value) || 0;
+  const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+  const income = parseFloat(document.getElementById('income').value) || 5000;
+  const projects = parseFloat(document.getElementById('projects').value) || 8;
+  
+  // Total monthly need
+  const monthlyNeed = income + expenses;
+  
+  // Hours per project including revisions (each revision ~15% of original hours)
+  const revisionHours = hours * (revisions * 0.15);
+  const totalHoursPerProject = hours + revisionHours;
+  
+  // Effective hourly rate needed
+  const totalMonthlyHours = totalHoursPerProject * projects;
+  const effectiveHourly = monthlyNeed / totalMonthlyHours;
+  
+  // Project price
+  const projectPrice = effectiveHourly * totalHoursPerProject;
+  
+  // With buffer
+  const bufferPrice = projectPrice * 1.2;
+  
+  // Benchmark
+  const bench = rates[service][level];
+  
+  // Display
+  document.getElementById('hourlyRate').textContent = '$' + effectiveHourly.toFixed(0) + '/hr';
+  document.getElementById('projectPrice').textContent = '$' + projectPrice.toFixed(0);
+  document.getElementById('bufferPrice').textContent = '$' + bufferPrice.toFixed(0);
+  document.getElementById('benchmark').textContent = '$' + bench[0] + '–$' + bench[1] + '/hr';
+  
+  // Market position
+  const marketEl = document.getElementById('marketPos');
+  let verdict = '';
+  
+  if (effectiveHourly < bench[0] * 0.7) {
+    marketEl.textContent = '⚠️ Underpriced';
+    marketEl.className = 'result-value red';
+    verdict = `You're pricing <strong>below market</strong>. At $${effectiveHourly.toFixed(0)}/hr you'll burn out fast. The floor for your level is ~$${bench[0]}/hr. Raise your price to at least <strong>$${Math.round(bufferPrice)}</strong> per project.`;
+  } else if (effectiveHourly < bench[0]) {
+    marketEl.textContent = 'Competitive';
+    marketEl.className = 'result-value warn';
+    verdict = `You're pricing <strong>competitively</strong> — slightly below the $${bench[0]}–$${bench[1]}/hr range. Good for building portfolio, but don't stay here long. Aim for <strong>$${Math.round(bufferPrice)}</strong> per project.`;
+  } else if (effectiveHourly <= bench[1]) {
+    marketEl.textContent = '✅ Market rate';
+    marketEl.className = 'result-value green';
+    verdict = `Solid pricing. At $${effectiveHourly.toFixed(0)}/hr you're right in the $${bench[0]}–$${bench[1]}/hr sweet spot. Quote <strong>$${Math.round(bufferPrice)}</strong> per project (includes revision buffer). You can go higher if your portfolio supports it.`;
+  } else {
+    marketEl.textContent = 'Premium';
+    marketEl.className = 'result-value green';
+    verdict = `You're pricing <strong>above the typical range</strong> ($${bench[0]}–$${bench[1]}/hr). That's fine if you have the reel, niche expertise, or speed to justify it. Quote <strong>$${Math.round(bufferPrice)}</strong> and lead with your best work.`;
+  }
+  
+  document.getElementById('verdict').innerHTML = verdict;
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+
 </body>
 </html>
