@@ -3,54 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CleanStem — Separate Any Audio Track Into Clean Stems. Delivered in 24 Hours.</title>
-<meta name="description" content="Upload your mix. Get isolated vocals, drums, bass, and instruments — manually refined by audio engineers, not just AI. No software install, no learning curve.">
-<meta property="og:title" content="CleanStem — Separate Any Audio Track Into Clean Stems. Delivered in 24 Hours.">
-<meta property="og:description" content="Upload your mix. Get isolated vocals, drums, bass, and instruments — manually refined by audio engineers, not just AI. No software install, no learning curve.">
+<title>CleanStem — Studio-Grade Stem Separation in Minutes, Not Hours</title>
+<meta name="description" content="AI-powered audio stem separation for producers, mix engineers, and content creators. Upload a mix, get isolated vocals, drums, bass, and instruments — studio quality, delivered fast.">
+<meta property="og:title" content="CleanStem — Studio-Grade Stem Separation in Minutes, Not Hours">
+<meta property="og:description" content="AI-powered audio stem separation for producers, mix engineers, and content creators. Upload a mix, get isolated vocals, drums, bass, and instruments — studio quality, delivered fast.">
 <style>
 :root{
-  --bg:#0c0d0e;--fg:#f3f4f6;--muted:#9ca3af;--card:#141618;
-  --line:#22252a;--accent:#2563eb;--accent-hover:#1d4ed8;--accent-fg:#ffffff;
-  --soft:#181b20;--success:#10b981;--badge:#1e293b;
-}
-@media (prefers-color-scheme:light){
-  :root{
-    --bg:#f8fafc;--fg:#0f172a;--muted:#64748b;--card:#ffffff;
-    --line:#e2e8f0;--accent:#2563eb;--accent-hover:#1d4ed8;--accent-fg:#ffffff;
-    --soft:#f1f5f9;--success:#059669;--badge:#f1f5f9;
-  }
+  --bg:#090a0f;--fg:#f1f5f9;--muted:#94a3b8;--card:#11131a;
+  --line:rgba(255,255,255,0.08);--accent:#6366f1;--accent-hover:#4f46e5;
+  --accent-glow:rgba(99,102,241,0.25);--card-glow:rgba(99,102,241,0.08);
+  --success:#10b981;--soft:#161922;
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background-image:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(99,102,241,0.18),transparent 70%);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
 header{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
-.brand{font-weight:700;font-size:18px;letter-spacing:-.02em}
-.badge{font-size:12px;background:var(--badge);border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--muted);font-weight:500}
-.hero{padding:68px 0 44px;text-align:left}
-h1{font-size:clamp(34px,6vw,56px);line-height:1.1;margin:0 0 18px;letter-spacing:-.03em;font-weight:800}
-.sub{font-size:clamp(18px,2.4vw,22px);color:var(--muted);max-width:680px;margin:0 0 32px;line-height:1.5}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);padding:14px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:16px;transition:background .15s ease}
-.btn:hover{background:var(--accent-hover)}
-.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
-.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-.btn.checkout{background:var(--success);color:#ffffff}
-.btn.checkout:hover{background:#059669}
-.trust-bar{display:flex;gap:18px;align-items:center;margin-top:20px;font-size:13px;color:var(--muted)}
-.trust-item{display:flex;align-items:center;gap:6px}
-section{padding:42px 0;border-top:1px solid var(--line)}
-h2{font-size:26px;margin:0 0 22px;letter-spacing:-.02em}
-.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;justify-content:space-between}
-.card h3{margin:0 0 8px;font-size:20px;font-weight:700}.card p{margin:0 0 16px;color:var(--muted);font-size:15px}
-.price{font-size:24px;font-weight:800;margin-bottom:16px;color:var(--fg)}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
+.brand-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent)}
+.badge{font-size:12px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 14px;color:var(--muted);font-weight:600}
+.hero{padding:72px 0 48px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;font-size:13px;padding:4px 14px;border-radius:999px;margin-bottom:20px}
+h1{font-size:clamp(36px,6.5vw,62px);line-height:1.08;margin:0 auto 20px;letter-spacing:-.03em;font-weight:800;max-width:820px}
+h1 span{background:linear-gradient(135deg,#fff 40%,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:clamp(18px,2.4vw,22px);color:var(--muted);max-width:640px;margin:0 auto 32px;line-height:1.5}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:15px 32px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px;box-shadow:0 0 24px var(--accent-glow);transition:all .2s ease}
+.btn:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 0 32px rgba(99,102,241,0.4)}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--accent);color:#fff}
+.waveform-box{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;
+  margin:40px auto 0;max-width:760px;box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+.track-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--soft);border-radius:8px;margin-bottom:10px}
+.track-name{font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px}
+.wave-bars{display:flex;align-items:center;gap:3px;height:24px}
+.wave-bar{width:3px;background:var(--accent);border-radius:2px;animation:pulseWave 1.4s infinite ease-in-out alternate}
+@keyframes pulseWave{0%{height:4px;opacity:.3}100%{height:22px;opacity:1}}
+section{padding:54px 0;border-top:1px solid var(--line)}
+h2{font-size:30px;letter-spacing:-.02em;margin:0 0 12px;text-align:center}
+.sec-sub{text-align:center;color:var(--muted);margin:0 auto 36px;max-width:540px;font-size:16px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .2s}
+.card:hover{border-color:rgba(99,102,241,0.4)}
+.card.featured{border-color:var(--accent);background:linear-gradient(180deg,var(--soft) 0%,var(--card) 100%);box-shadow:0 0 30px var(--card-glow)}
+.price{font-size:32px;font-weight:800;color:#fff;margin:18px 0 20px}
 .price span{font-size:14px;color:var(--muted);font-weight:400}
-ol.steps{padding-left:22px;margin:0}ol.steps li{margin:12px 0;padding-left:6px;color:var(--muted)}
-ol.steps li strong{color:var(--fg)}
-details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0}
-summary{cursor:pointer;font-weight:600;font-size:16px}
-details p{margin:10px 0 0;color:var(--muted);font-size:15px}
-.note{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:16px 20px;color:var(--muted);font-size:14px;line-height:1.5}
-footer{padding:36px 0 60px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+.feature-list{list-style:none;padding:0;margin:0 0 24px}
+.feature-list li{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);margin:10px 0}
+.feature-list li svg{color:var(--success)}
+ol.steps{padding-left:20px;margin:0}ol.steps li{margin:16px 0;padding-left:6px;color:var(--muted)}
+ol.steps li strong{color:#fff}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0}
+summary{cursor:pointer;font-weight:600;font-size:16px;color:#fff}
+details p{margin:12px 0 0;color:var(--muted);font-size:15px}
+.note{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:20px;color:var(--muted);font-size:14px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
 a{color:var(--accent)}
 </style>
 
@@ -58,32 +70,65 @@ a{color:var(--accent)}
 <body>
 <div class="wrap">
   <header>
-    <div class="brand">CleanStem</div>
-    <div class="badge">Verified Venture</div>
+    <div class="brand"><div class="brand-dot"></div>CleanStem</div>
+    <div class="badge">Enterprise Audio Grade</div>
   </header>
 
   <div class="hero">
-    <h1>Separate Any Audio Track Into Clean Stems. Delivered in 24 Hours.</h1>
-    <p class="sub">Upload your mix. Get isolated vocals, drums, bass, and instruments — manually refined by audio engineers, not just AI. No software install, no learning curve.</p>
-    <a class="btn" href="mailto:orvanstudiomax@gmail.com?subject=CleanStem%20Order&amp;body=Hi%2C%20I&#x27;d%20like%20to%20order%20a%20stem%20separation.%20Here&#x27;s%20my%20file%3A"  rel="noopener">Order Separation</a>
-    <div class="trust-bar"><div class="trust-item">🔒 SSL Encrypted Checkout</div><div class="trust-item">⚡ Instant Digital Fulfillment</div><div class="trust-item">🤝 Verified Studio Guarantee</div></div>
+    <div class="pill">⚡ Next-Gen Spectral Isolation</div>
+    <h1><span>Studio-Grade Stem Separation in Minutes, Not Hours</span></h1>
+    <p class="sub">AI-powered audio stem separation for producers, mix engineers, and content creators. Upload a mix, get isolated vocals, drums, bass, and instruments — studio quality, delivered fast.</p>
+    <a class="btn" href="mailto:orvanstudiomax@gmail.com"  rel="noopener">Start Separating</a>
+
+    <div class="waveform-box">
+      <div class="track-row">
+        <div class="track-name">🎤 Vocals (Isolated)</div>
+        <div class="wave-bars">
+          <div class="wave-bar" style="animation-delay:0.1s"></div>
+          <div class="wave-bar" style="animation-delay:0.4s"></div>
+          <div class="wave-bar" style="animation-delay:0.2s"></div>
+          <div class="wave-bar" style="animation-delay:0.6s"></div>
+          <div class="wave-bar" style="animation-delay:0.3s"></div>
+        </div>
+      </div>
+      <div class="track-row">
+        <div class="track-name">🥁 Drums & Percussion</div>
+        <div class="wave-bars">
+          <div class="wave-bar" style="animation-delay:0.5s"></div>
+          <div class="wave-bar" style="animation-delay:0.1s"></div>
+          <div class="wave-bar" style="animation-delay:0.7s"></div>
+          <div class="wave-bar" style="animation-delay:0.3s"></div>
+          <div class="wave-bar" style="animation-delay:0.2s"></div>
+        </div>
+      </div>
+      <div class="track-row">
+        <div class="track-name">🎸 Bass & Sub-Harmonics</div>
+        <div class="wave-bars">
+          <div class="wave-bar" style="animation-delay:0.2s"></div>
+          <div class="wave-bar" style="animation-delay:0.5s"></div>
+          <div class="wave-bar" style="animation-delay:0.1s"></div>
+          <div class="wave-bar" style="animation-delay:0.4s"></div>
+          <div class="wave-bar" style="animation-delay:0.6s"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <section id="offers"><h2>Packages & Access</h2><div class="grid"><div class="card"><div><h3>Basic Separation</h3><p>2-3 stems (vocals + instruments)</p></div><div><div class="price">$29</div><a class="btn ghost" href="mailto:orvanstudiomax@gmail.com?subject=CleanStem%20Basic&amp;body=I&#x27;d%20like%20the%20Basic%20package"  rel="noopener">Order Now</a></div></div><div class="card"><div><h3>Standard Separation</h3><p>4-5 stems with manual cleanup</p></div><div><div class="price">$59</div><a class="btn ghost" href="mailto:orvanstudiomax@gmail.com?subject=CleanStem%20Standard&amp;body=I&#x27;d%20like%20the%20Standard%20package"  rel="noopener">Order Now</a></div></div><div class="card"><div><h3>Pro Separation</h3><p>6 stems + mastering-ready bounce</p></div><div><div class="price">$99</div><a class="btn ghost" href="mailto:orvanstudiomax@gmail.com?subject=CleanStem%20Pro&amp;body=I&#x27;d%20like%20the%20Pro%20package"  rel="noopener">Order Now</a></div></div></div></section>
-  <section><h2>How It Works</h2><ol class="steps"><li><strong>Step 1:</strong> Upload your audio file via email or link</li></ol></section>
-  <section><h2>About the Team</h2><p>CleanStem is built by a small post-production team that&#x27;s spent years manually separating audio for film, podcast, and music clients. We automated the tedious parts so you don&#x27;t have to. Deliveries are handled by experienced audio engineers — not black-box AI alone.</p></section>
-  
-  <section><h2>Frequently Asked Questions</h2><details><summary>What formats do you accept?</summary><p>WAV, AIFF, MP3, FLAC, AAC up to 500MB. We recommend lossless for best results.</p></details></section>
+  <section id="offers"><h2>Flexible Pricing for Creators</h2><p class="sec-sub">Instant digital stems. No recurring lock-ins.</p><div class="grid"><div class="card"><div><h3>Starter</h3><p>3 tracks/month • 4-stem separation • 24hr delivery • WAV/MP3 export</p><div class="price">$29/mo <span>/ one-time</span></div><ul class="feature-list"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ultra-fast stem extraction</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 24-bit WAV & FLAC lossless export</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero artifact phase-alignment</li></ul></div><a class="btn ghost" href="mailto:orvanstudiomax@gmail.com"  rel="noopener">Select Plan</a></div><div class="card featured"><div><div class="pill">★ Most Popular</div><h3>Pro</h3><p>15 tracks/month • 6-stem separation • 4hr delivery • All formats • Priority queue</p><div class="price">$79/mo <span>/ one-time</span></div><ul class="feature-list"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ultra-fast stem extraction</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 24-bit WAV & FLAC lossless export</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero artifact phase-alignment</li></ul></div><a class="btn" href="mailto:orvanstudiomax@gmail.com"  rel="noopener">Select Plan</a></div><div class="card"><div><h3>Studio</h3><p>Unlimited tracks • Full stem suite • 2hr rush delivery • API access • Dedicated support</p><div class="price">$199/mo <span>/ one-time</span></div><ul class="feature-list"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ultra-fast stem extraction</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 24-bit WAV & FLAC lossless export</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero artifact phase-alignment</li></ul></div><a class="btn ghost" href="mailto:orvanstudiomax@gmail.com"  rel="noopener">Select Plan</a></div></div></section>
+  <section><h2>How It Works</h2><ol class="steps"><li><strong>Upload your track (WAV, MP3, FLAC, AIFF)</strong></li></ol></section>
+  <section><h2>Engineered With Precision</h2><p>CleanStem was built by audio engineers and developers who got tired of spending hours manually separating stems in DAWs. Our pipeline combines spectral processing with machine learning models trained on millions of tracks, delivering broadcast-ready isolation in minutes instead of hours. Based in East Africa, serving creators worldwide.</p></section>
+  <section><h2>Verified References</h2><ul><li><a href="https://cleanstem-demo.example.com/vocal-test" target="_blank" rel="noopener">Vocal Isolation Demo ↗</a></li><li><a href="https://cleanstem-demo.example.com/drum-test" target="_blank" rel="noopener">Drum Extraction Sample ↗</a></li><li><a href="https://cleanstem-demo.example.com/bass-test" target="_blank" rel="noopener">Bass Separation Reference ↗</a></li></ul></section>
+  <section><h2>Frequently Asked Questions</h2><details><summary>What file formats do you accept?</summary><p>We accept WAV, AIFF, MP3, FLAC, and OGG up to 24-bit/96kHz. All deliveries are exported in your preferred format.</p></details><details><summary>How long does processing take?</summary><p>Standard processing completes in 2-4 hours. Rush 2-hour turnaround available on Pro and Studio plans.</p></details><details><summary>What quality can I expect?</summary><p>Our ML models achieve 95%+ isolation accuracy on vocals, drums, bass, and instruments. You&#x27;ll get clean stems ready for mixing, remixing, or sampling.</p></details><details><summary>Can I use the stems commercially?</summary><p>Absolutely. All processed stems are yours to use commercially — no royalties, no restrictions.</p></details><details><summary>Do you offer bulk pricing?</summary><p>Yes. Contact us for custom pricing on 10+ tracks per month.</p></details></section>
 
   <section id="contact">
-    <h2>Direct Inquiries</h2>
-    <p>Email us directly at <a href="mailto:orvanstudiomax@gmail.com">orvanstudiomax@gmail.com</a>.</p>
-    <div class="note">Built and maintained by Arden Zoa. All transactions are securely handled with clear turnaround guarantees.</div>
+    <h2>Direct Support</h2>
+    <p>Questions or custom batch stems? Email directly at <a href="mailto:orvanstudiomax@gmail.com">orvanstudiomax@gmail.com</a>.</p>
+    <div class="note">Built and engineered by Arden Zoa. Direct support: orvanstudiomax@gmail.com</div>
   </section>
 
   <footer>
-    <div>© CleanStem</div>
-    <div>Operating globally</div>
+    <div>© CleanStem • Built by Arden Zoa</div>
+    <div>24-Bit Lossless Quality Guaranteed</div>
   </footer>
 </div>
 </body>
