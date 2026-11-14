@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arden Zoa - Lead Database Report</title>
+<style>
+@page { size: A4; margin: 20mm; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a2e; line-height: 1.6; max-width: 210mm; margin: 0 auto; padding: 20mm; }
+h1 { text-align: center; color: #0f0f23; font-size: 24pt; margin-bottom: 5px; }
+h2 { color: #16213e; font-size: 16pt; border-bottom: 3px solid #0f3460; padding-bottom: 5px; margin-top: 30px; }
+h3 { color: #533483; font-size: 13pt; margin-top: 20px; }
+.meta { text-align: center; color: #666; font-size: 10pt; margin-bottom: 30px; }
+.summary-box { background: #f8f9fa; border-left: 5px solid #0f3460; padding: 15px; margin: 20px 0; }
+.summary-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px dotted #ddd; }
+.summary-label { font-weight: 600; }
+.summary-value { color: #0f3460; font-weight: 700; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 10pt; }
+th { background: #0f3460; color: white; padding: 10px 8px; text-align: left; font-size: 9pt; text-transform: uppercase; }
+td { padding: 8px; border-bottom: 1px solid #e0e0e0; }
+tr:nth-child(even) { background: #f8f9fa; }
+.status-new { color: #28a745; font-weight: 700; }
+.status-contacted { color: #ffc107; font-weight: 700; }
+.status-replied { color: #007bff; font-weight: 700; }
+.priority-high { background: #d4edda !important; }
+.priority-medium { background: #fff3cd !important; }
+.priority-low { background: #f8d7da !important; }
+.notes { background: #fffbeb; border: 1px solid #f59e0b; padding: 10px; margin: 10px 0; font-size: 9pt; border-radius: 4px; }
+.footer { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #0f3460; color: #666; font-size: 8pt; }
+.venture-tag { display: inline-block; background: #533483; color: white; padding: 3px 10px; border-radius: 3px; font-size: 8pt; margin-left: 10px; }
+</style>
+</head>
+<body>
+
+<h1>📊 LEAD DATABASE REPORT</h1>
+<div class="meta">Arden Zoa — Commercial Pipeline | Generated: 18 November 2026</div>
+
+<div class="summary-box">
+<h3 style="margin-top:0;">Executive Summary</h3>
+<div class="summary-row"><span class="summary-label">Total Prospects</span><span class="summary-value">25</span></div>
+<div class="summary-row"><span class="summary-label">Active Ventures</span><span class="summary-value">3</span></div>
+<div class="summary-row"><span class="summary-label">With Direct Email</span><span class="summary-value">12 (48%)</span></div>
+<div class="summary-row"><span class="summary-label">Without Email</span><span class="summary-value">13 (52%)</span></div>
+<div class="summary-row"><span class="summary-label">New (Untouched)</span><span class="summary-value">19</span></div>
+<div class="summary-row"><span class="summary-label">Contacted</span><span class="summary-value">2</span></div>
+<div class="summary-row"><span class="summary-label">Replied</span><span class="summary-value">4</span></div>
+</div>
+
+<h2>🎬 Venture 1: VFX for Indie Filmmakers <span class="venture-tag">Experiment #1</span></h2>
+<p style="font-size:9pt; color:#666;">Target: 3 qualified conversations | Outreach Rate: 33%</p>
+
+<table>
+<tr><th>ID</th><th>Name</th><th>Status</th><th>Contact Method</th></tr>
+<tr><td>23</td><td>PFTompkins</td><td class="status-new">NEW</td><td>Bluesky Profile</td></tr>
+<tr><td>21</td><td>Long Live Productions</td><td class="status-new">NEW</td><td>info@longliveproductions.com</td></tr>
+<tr><td>20</td><td>Lauren Cooper — LC Films</td><td class="status-contacted">CONTACTED</td><td>laurendcooper@gmail.com</td></tr>
+<tr><td>15</td><td>Dhar Mann Studios</td><td class="status-new">NEW</td><td>EntertainmentCareers</td></tr>
+<tr><td>13</td><td>Stercore Games</td><td class="status-new">NEW</td><td>Bluesky Profile</td></tr>
+<tr><td>9</td><td>Fireflies Film</td><td class="status-contacted">CONTACTED</td><td>work@fireflies-film.com</td></tr>
+</table>
+
+<div class="notes">
+<strong>Notes:</strong> 2 of 6 already contacted. 2 have direct email addresses. 4 still available for first outreach.
+</div>
+
+<h2>🎥 Venture 2: YouTube Creator Retainer <span class="venture-tag">Experiment #2</span></h2>
+<p style="font-size:9pt; color:#666;">Target: 1 signed paying retainer | Outreach Rate: 0%</p>
+
+<table>
+<tr><th>ID</th><th>Name</th><th>Status</th><th>Contact Method</th></tr>
+<tr><td>12</td><td>Chris Spargo</td><td class="status-new">NEW</td><td>YTJobs Posting</td></tr>
+</table>
+
+<div class="notes">
+<strong>Notes:</strong> Only 1 lead in this venture — needs more prospecting. Source: YouTube job board.
+</div>
+
+<h2>🎙️ Venture 3: Podcast Clip Repurposing <span class="venture-tag">Experiment #3</span></h2>
+<p style="font-size:9pt; color:#666;">Target: 1 paid pilot package ($150) | Outreach Rate: 0%</p>
+
+<table>
+<tr><th>ID</th><th>Name</th><th>Status</th><th>Contact Method</th></tr>
+<tr><td>22</td><td>Cott</td><td class="status-new">NEW</td><td>cott@gmail.com</td></tr>
+<tr><td>19</td><td>FilmLaab</td><td class="status-new">NEW</td><td>hello@filmlaab.com</td></tr>
+<tr><td>18</td><td>It's Not Just A Period</td><td class="status-new">NEW</td><td>Facebook Group</td></tr>
+<tr><td>17</td><td>Feeder Series</td><td class="status-new">NEW</td><td>editorial@feederseries.net</td></tr>
+<tr><td>16</td><td>Unbeatable Cast</td><td class="status-new">NEW</td><td>Bluesky Profile</td></tr>
+<tr><td>14</td><td>The Wilkinson Firm</td><td class="status-new">NEW</td><td>careers@thewilkinsonfirm.com</td></tr>
+<tr><td>11</td><td>Founders, Inc.</td><td class="status-new">NEW</td><td>YTJobs</td></tr>
+<tr><td>10</td><td>LOL Podcast</td><td class="status-new">NEW</td><td>YTJobs</td></tr>
+<tr><td>8</td><td>Unbeatable Cast</td><td class="status-new">NEW</td><td>Website <em>(duplicate)</em></td></tr>
+<tr><td>7</td><td>Merrick Creative</td><td class="status-new">NEW</td><td>Careers Page</td></tr>
+<tr><td>6</td><td>Film Laab</td><td class="status-new">NEW</td><td>Instagram <em>(duplicate)</em></td></tr>
+<tr><td>5</td><td>How I Invest</td><td class="status-new">NEW</td><td>YTJobs</td></tr>
+<tr><td>4</td><td>Unbeatable Cast</td><td class="status-new">NEW</td><td>Google Form <em>(duplicate)</em></td></tr>
+<tr><td>3</td><td>80,000 Hours Podcast</td><td class="status-new">NEW</td><td>80000hours.org</td></tr>
+</table>
+
+<div class="notes">
+<strong>Notes:</strong> 14 leads, all untouched. 4 have direct email addresses. 3 duplicate entries for Unbeatable Cast — should consolidate. Largest venture by volume, highest potential.
+</div>
+
+<h2>🏢 Admin / Platform Contacts</h2>
+<p style="font-size:9pt; color:#666;">Platform communications — not commercial prospects</p>
+
+<table>
+<tr><th>ID</th><th>Name</th><th>Status</th><th>Contact</th></tr>
+<tr><td>25</td><td>Google AI Studio</td><td class="status-replied">REPLIED</td><td>googleaistudio-noreply@google.com</td></tr>
+<tr><td>24</td><td>Rotem Weiss (Tavily)</td><td class="status-replied">REPLIED</td><td>rotem@tavily.com</td></tr>
+<tr><td>2</td><td>GitHub</td><td class="status-replied">REPLIED</td><td>support@github.com</td></tr>
+<tr><td>1</td><td>Google</td><td class="status-replied">REPLIED</td><td>noreply-accounts@google.com</td></tr>
+</table>
+
+<h2>🎯 Outreach Priorities</h2>
+
+<h3>🔴 HIGH PRIORITY (Have email + untouched)</h3>
+<table>
+<tr><th>#</th><th>Lead</th><th>Venture</th><th>Email</th></tr>
+<tr class="priority-high"><td>1</td><td>Long Live Productions</td><td>VFX</td><td>info@longliveproductions.com</td></tr>
+<tr class="priority-high"><td>2</td><td>Cott</td><td>Podcast</td><td>cott@gmail.com</td></tr>
+<tr class="priority-high"><td>3</td><td>FilmLaab</td><td>Podcast</td><td>hello@filmlaab.com</td></tr>
+<tr class="priority-high"><td>4</td><td>Feeder Series</td><td>Podcast</td><td>editorial@feederseries.net</td></tr>
+<tr class="priority-high"><td>5</td><td>The Wilkinson Firm</td><td>Podcast</td><td>careers@thewilkinsonfirm.com</td></tr>
+</table>
+
+<h3>🟡 MEDIUM PRIORITY (No email, need social/platform outreach)</h3>
+<table>
+<tr><th>#</th><th>Lead</th><th>Platform</th></tr>
+<tr class="priority-medium"><td>6</td><td>PFTompkins</td><td>Bluesky</td></tr>
+<tr class="priority-medium"><td>7</td><td>Dhar Mann Studios</td><td>Job Board</td></tr>
+<tr class="priority-medium"><td>8</td><td>Stercore Games</td><td>Bluesky</td></tr>
+<tr class="priority-medium"><td>9</td><td>Chris Spargo</td><td>YTJobs</td></tr>
+<tr class="priority-medium"><td>10</td><td>80,000 Hours Podcast</td><td>Website</td></tr>
+</table>
+
+<h3>🟢 LOW PRIORITY (Duplicates or admin)</h3>
+<table>
+<tr><th>Issue</th><th>Details</th></tr>
+<tr class="priority-low"><td>Unbeatable Cast</td><td>3 duplicate entries — consolidate to 1</td></tr>
+<tr class="priority-low"><td>Film Laab / FilmLaab</td><td>Possible duplicate</td></tr>
+<tr class="priority-low"><td>Admin contacts</td><td>Platform comms only</td></tr>
+</table>
+
+<div class="footer">
+<p><strong>Arden Zoa</strong> — Co-Founder & Internet Builder | Commercial Pipeline Report</p>
+<p>This report is auto-generated from the live prospect database. Data current as of generation time.</p>
+</div>
+
+</body>
+</html>

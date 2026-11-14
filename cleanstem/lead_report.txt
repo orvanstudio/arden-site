@@ -1,0 +1,120 @@
+===============================================================================
+                    📊 LEAD DATABASE REPORT
+                    Arden Zoa — Commercial Pipeline
+                    Generated: 18 November 2026
+===============================================================================
+
+EXECUTIVE SUMMARY
+-----------------
+Total Prospects:        25
+Active Ventures:        3
+With Direct Email:      12 (48%)
+Without Email:          13 (52%)
+New (Untouched):        19
+Contacted:              2
+Replied:                4
+
+===============================================================================
+🎬 VENTURE 1: VFX for Indie Filmmakers
+    Target: 3 qualified conversations | Outreach Rate: 33%
+===============================================================================
+
+ID   Name                        Status        Contact Method
+---- -------------------------  -----------   -------------------------
+23   PFTompkins                  NEW           Bluesky Profile
+21   Long Live Productions       NEW           info@longliveproductions.com
+20   Lauren Cooper — LC Films    CONTACTED     laurendcooper@gmail.com
+15   Dhar Mann Studios           NEW           EntertainmentCareers
+13   Stercore Games              NEW           Bluesky Profile
+9    Fireflies Film              CONTACTED     work@fireflies-film.com
+
+Notes: 2 of 6 already contacted. 2 have direct email addresses.
+4 still available for first outreach.
+
+===============================================================================
+🎥 VENTURE 2: YouTube Creator Retainer
+    Target: 1 signed paying retainer | Outreach Rate: 0%
+===============================================================================
+
+ID   Name            Status        Contact Method
+---- --------------  -----------   -------------------------
+12   Chris Spargo    NEW           YTJobs Posting
+
+Notes: Only 1 lead in this venture — needs more prospecting.
+Source: YouTube job board.
+
+===============================================================================
+🎙️ VENTURE 3: Podcast Clip Repurposing
+    Target: 1 paid pilot package ($150) | Outreach Rate: 0%
+===============================================================================
+
+ID   Name                        Status        Contact Method
+---- -------------------------  -----------   -------------------------
+22   Cott                        NEW           cott@gmail.com
+19   FilmLaab                    NEW           hello@filmlaab.com
+18   It's Not Just A Period      NEW           Facebook Group
+17   Feeder Series               NEW           editorial@feederseries.net
+16   Unbeatable Cast             NEW           Bluesky Profile
+14   The Wilkinson Firm          NEW           careers@thewilkinsonfirm.com
+11   Founders, Inc.              NEW           YTJobs
+10   LOL Podcast                 NEW           YTJobs
+8    Unbeatable Cast             NEW           Website (DUPLICATE)
+7    Merrick Creative            NEW           Careers Page
+6    Film Laab                   NEW           Instagram (DUPLICATE)
+5    How I Invest                NEW           YTJobs
+4    Unbeatable Cast             NEW           Google Form (DUPLICATE)
+3    80,000 Hours Podcast        NEW           80000hours.org
+
+Notes: 14 leads, all untouched. 4 have direct email addresses.
+3 duplicate entries for Unbeatable Cast — should consolidate.
+Largest venture by volume, highest potential.
+
+===============================================================================
+🏢 ADMIN / PLATFORM CONTACTS
+    Platform communications — not commercial prospects
+===============================================================================
+
+ID   Name                    Status        Contact
+---- ---------------------  -----------   -------------------------
+25   Google AI Studio        REPLIED       googleaistudio-noreply@google.com
+24   Rotem Weiss (Tavily)    REPLIED       rotem@tavily.com
+2    GitHub                  REPLIED       support@github.com
+1    Google                  REPLIED       noreply-accounts@google.com
+
+===============================================================================
+🎯 OUTREACH PRIORITIES
+===============================================================================
+
+🔴 HIGH PRIORITY (Have email + untouched)
+-----------------------------------------
+#   Lead                      Venture     Email
+--  ------------------------  ----------  -------------------------
+1   Long Live Productions     VFX         info@longliveproductions.com
+2   Cott                      Podcast     cott@gmail.com
+3   FilmLaab                  Podcast     hello@filmlaab.com
+4   Feeder Series             Podcast     editorial@feederseries.net
+5   The Wilkinson Firm        Podcast     careers@thewilkinsonfirm.com
+
+🟡 MEDIUM PRIORITY (No email, need social/platform outreach)
+-----------------------------------------------------------
+#   Lead                      Platform
+--  ------------------------  -------------------------
+6   PFTompkins                Bluesky
+7   Dhar Mann Studios         Job Board
+8   Stercore Games            Bluesky
+9   Chris Spargo              YTJobs
+10  80,000 Hours Podcast      Website
+
+🟢 LOW PRIORITY (Duplicates or admin)
+-------------------------------------
+Issue                     Details
+------------------------  -----------------------------------------
+Unbeatable Cast           3 duplicate entries — consolidate to 1
+Film Laab / FilmLaab      Possible duplicate
+Admin contacts            Platform comms only
+
+===============================================================================
+Arden Zoa — Co-Founder & Internet Builder | Commercial Pipeline Report
+This report is auto-generated from the live prospect database.
+Data current as of generation time.
+===============================================================================
