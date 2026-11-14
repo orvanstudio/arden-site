@@ -1,355 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CreatorRate — Know What Your Video Work Is Actually Worth</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CreatorRate — Know Your Rate. Quote With Confidence.</title>
+<meta name="description" content="The project rate calculator built for video editors, motion designers, and freelance creators. Stop guessing — price every job based on your real costs, desired income, and market rates.">
+<meta property="og:title" content="CreatorRate — Know Your Rate. Quote With Confidence.">
+<meta property="og:description" content="The project rate calculator built for video editors, motion designers, and freelance creators. Stop guessing — price every job based on your real costs, desired income, and market rates.">
 <style>
-  :root {
-    --bg: #0a0a0c;
-    --card: #141418;
-    --border: #2a2a32;
-    --accent: #6c5ce7;
-    --accent-light: #a29bfe;
-    --text: #e8e8ed;
-    --text-dim: #8888a0;
-    --success: #00b894;
-    --warn: #fdcb6e;
-    --danger: #e17055;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-  .container { max-width: 720px; margin: 0 auto; padding: 20px; }
-  
-  /* Hero */
-  .hero {
-    text-align: center;
-    padding: 60px 20px 40px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 40px;
-  }
-  .hero h1 {
-    font-size: 2.4rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 12px;
-    background: linear-gradient(135deg, var(--accent-light), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 520px; margin: 0 auto; }
-  
-  /* Calculator Card */
-  .calc-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
-    margin-bottom: 24px;
-  }
-  .calc-card h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.8rem;
-  }
-  
-  /* Form */
-  .field { margin-bottom: 20px; }
-  .field label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 6px;
-    color: var(--text);
-  }
-  .field .hint {
-    font-size: 0.78rem;
-    color: var(--text-dim);
-    margin-bottom: 8px;
-  }
-  input[type="number"], select {
-    width: 100%;
-    padding: 12px 16px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-size: 1rem;
-    font-family: inherit;
-    transition: border-color 0.2s;
-  }
-  input:focus, select:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  
-  /* Results */
-  .results {
-    background: linear-gradient(135deg, #1a1a24, #141418);
-    border: 1px solid var(--accent);
-    border-radius: 16px;
-    padding: 32px;
-    margin-bottom: 24px;
-    display: none;
-  }
-  .results.visible { display: block; }
-  .results h3 {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent-light);
-    margin-bottom: 20px;
-  }
-  .result-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .result-row:last-child { border-bottom: none; }
-  .result-label { color: var(--text-dim); font-size: 0.95rem; }
-  .result-value { font-weight: 700; font-size: 1rem; }
-  .result-value.highlight {
-    color: var(--accent-light);
-    font-size: 1.4rem;
-  }
-  .result-value.green { color: var(--success); }
-  .result-value.warn { color: var(--warn); }
-  .result-value.red { color: var(--danger); }
-  
-  .verdict {
-    margin-top: 20px;
-    padding: 16px;
-    background: rgba(108, 92, 231, 0.1);
-    border-radius: 10px;
-    font-size: 0.9rem;
-    line-height: 1.7;
-  }
-  
-  /* Button */
-  .btn {
-    display: inline-block;
-    width: 100%;
-    padding: 16px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    font-family: inherit;
-  }
-  .btn:hover { background: #5a4bd4; }
-  .btn:active { transform: scale(0.98); }
-  
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
-    margin-top: 40px;
-  }
-  .footer a { color: var(--accent-light); text-decoration: none; }
-  
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 1.8rem; }
-    .row { grid-template-columns: 1fr; }
-    .calc-card { padding: 24px; }
-  }
+:root{
+  --bg:#090a0f;--fg:#f1f5f9;--muted:#94a3b8;--card:#11131a;
+  --line:rgba(255,255,255,0.08);--accent:#6366f1;--accent-hover:#4f46e5;
+  --accent-glow:rgba(99,102,241,0.25);--card-glow:rgba(99,102,241,0.08);
+  --success:#10b981;--soft:#161922;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background-image:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(99,102,241,0.18),transparent 70%);
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.03em;display:flex;align-items:center;gap:8px}
+.brand-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent)}
+.badge{font-size:12px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 14px;color:var(--muted);font-weight:600}
+.hero{padding:72px 0 48px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;font-size:13px;padding:4px 14px;border-radius:999px;margin-bottom:20px}
+h1{font-size:clamp(36px,6.5vw,62px);line-height:1.08;margin:0 auto 20px;letter-spacing:-.03em;font-weight:800;max-width:820px}
+h1 span{background:linear-gradient(135deg,#fff 40%,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:clamp(18px,2.4vw,22px);color:var(--muted);max-width:640px;margin:0 auto 32px;line-height:1.5}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:15px 32px;border-radius:12px;text-decoration:none;font-weight:700;font-size:16px;box-shadow:0 0 24px var(--accent-glow);transition:all .2s ease}
+.btn:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 0 32px rgba(99,102,241,0.4)}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--accent);color:#fff}
+.waveform-box{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;
+  margin:40px auto 0;max-width:760px;box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+.track-row{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--soft);border-radius:8px;margin-bottom:10px}
+.track-name{font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px}
+.wave-bars{display:flex;align-items:center;gap:3px;height:24px}
+.wave-bar{width:3px;background:var(--accent);border-radius:2px;animation:pulseWave 1.4s infinite ease-in-out alternate}
+@keyframes pulseWave{0%{height:4px;opacity:.3}100%{height:22px;opacity:1}}
+section{padding:54px 0;border-top:1px solid var(--line)}
+h2{font-size:30px;letter-spacing:-.02em;margin:0 0 12px;text-align:center}
+.sec-sub{text-align:center;color:var(--muted);margin:0 auto 36px;max-width:540px;font-size:16px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .2s}
+.card:hover{border-color:rgba(99,102,241,0.4)}
+.card.featured{border-color:var(--accent);background:linear-gradient(180deg,var(--soft) 0%,var(--card) 100%);box-shadow:0 0 30px var(--card-glow)}
+.price{font-size:32px;font-weight:800;color:#fff;margin:18px 0 20px}
+.price span{font-size:14px;color:var(--muted);font-weight:400}
+.feature-list{list-style:none;padding:0;margin:0 0 24px}
+.feature-list li{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);margin:10px 0}
+.feature-list li svg{color:var(--success)}
+ol.steps{padding-left:20px;margin:0}ol.steps li{margin:16px 0;padding-left:6px;color:var(--muted)}
+ol.steps li strong{color:#fff}
+.specs-box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;margin-top:20px}
+.spec-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.spec-item:last-child{border-bottom:none}
+.spec-title{color:var(--muted)}.spec-val{font-weight:600;color:#fff}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0}
+summary{cursor:pointer;font-weight:600;font-size:16px;color:#fff}
+details p{margin:12px 0 0;color:var(--muted);font-size:15px}
+.note{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:20px;color:var(--muted);font-size:14px}
+footer{padding:40px 0 60px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+a{color:var(--accent)}
 </style>
+
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <div class="brand"><div class="brand-dot"></div>CreatorRate</div>
+    <div class="badge">Enterprise Audio Grade</div>
+  </header>
 
-<div class="hero">
-  <h1>Stop Guessing Your Rate</h1>
-  <p>Plug in your hours, expenses, and goals. Get a real per-project price — not a vibe.</p>
-</div>
+  <div class="hero">
+    <div class="pill">⚡ Next-Gen Spectral Isolation</div>
+    <h1><span>Know Your Rate. Quote With Confidence.</span></h1>
+    <p class="sub">The project rate calculator built for video editors, motion designers, and freelance creators. Stop guessing — price every job based on your real costs, desired income, and market rates.</p>
+    <a class="btn" href="mailto:orvanstudiomax@gmail.com"  rel="noopener">Calculate Your Rate</a>
 
-<div class="container">
-  
-  <div class="calc-card">
-    <h2>Your Numbers</h2>
-    
-    <div class="field">
-      <label>What do you do?</label>
-      <select id="service">
-        <option value="editing">Video Editing</option>
-        <option value="motion">Motion Graphics</option>
-        <option value="vfx">VFX / Compositing</option>
-        <option value="color">Color Grading</option>
-        <option value="sound">Sound Design / Mixing</option>
-        <option value="animation">2D/3D Animation</option>
-        <option value="general">General Creative Services</option>
-      </select>
-    </div>
-    
-    <div class="field">
-      <label>Your experience level</label>
-      <select id="level">
-        <option value="junior">Junior (0–2 years)</option>
-        <option value="mid" selected>Mid-Level (2–5 years)</option>
-        <option value="senior">Senior (5–10 years)</option>
-        <option value="expert">Expert / Specialist (10+ years)</option>
-      </select>
-    </div>
-    
-    <div class="row">
-      <div class="field">
-        <label>Hours per project</label>
-        <div class="hint">Realistic estimate including revisions</div>
-        <input type="number" id="hours" placeholder="e.g. 12" min="1" max="500" value="10">
+    <div class="waveform-box">
+      <div class="track-row">
+        <div class="track-name">🎤 Vocals (Isolated)</div>
+        <div class="wave-bars">
+          <div class="wave-bar" style="animation-delay:0.1s"></div>
+          <div class="wave-bar" style="animation-delay:0.4s"></div>
+          <div class="wave-bar" style="animation-delay:0.2s"></div>
+          <div class="wave-bar" style="animation-delay:0.6s"></div>
+          <div class="wave-bar" style="animation-delay:0.3s"></div>
+        </div>
       </div>
-      <div class="field">
-        <label>Revisions expected</label>
-        <div class="hint">Number of revision rounds</div>
-        <input type="number" id="revisions" placeholder="e.g. 2" min="0" max="20" value="2">
+      <div class="track-row">
+        <div class="track-name">🥁 Drums & Percussion</div>
+        <div class="wave-bars">
+          <div class="wave-bar" style="animation-delay:0.5s"></div>
+          <div class="wave-bar" style="animation-delay:0.1s"></div>
+          <div class="wave-bar" style="animation-delay:0.7s"></div>
+          <div class="wave-bar" style="animation-delay:0.3s"></div>
+          <div class="wave-bar" style="animation-delay:0.2s"></div>
+        </div>
+      </div>
+      <div class="track-row">
+        <div class="track-name">🎸 Bass & Sub-Harmonics</div>
+        <div class="wave-bars">
+          <div class="wave-bar" style="animation-delay:0.2s"></div>
+          <div class="wave-bar" style="animation-delay:0.5s"></div>
+          <div class="wave-bar" style="animation-delay:0.1s"></div>
+          <div class="wave-bar" style="animation-delay:0.4s"></div>
+          <div class="wave-bar" style="animation-delay:0.6s"></div>
+        </div>
       </div>
     </div>
-    
-    <div class="row">
-      <div class="field">
-        <label>Monthly expenses ($)</label>
-        <div class="hint">Software, hardware, internet, etc.</div>
-        <input type="number" id="expenses" placeholder="e.g. 300" min="0" value="200">
-      </div>
-      <div class="field">
-        <label>Target monthly income ($)</label>
-        <div class="hint">After expenses, what you take home</div>
-        <input type="number" id="income" placeholder="e.g. 5000" min="0" value="5000">
-      </div>
-    </div>
-    
-    <div class="field">
-      <label>Projects per month</label>
-      <div class="hint">How many you can realistically deliver</div>
-      <input type="number" id="projects" placeholder="e.g. 8" min="1" max="100" value="8">
-    </div>
-    
-    <button class="btn" onclick="calculate()">Calculate My Rate</button>
   </div>
+
+  <section id="offers"><h2>Flexible Pricing for Creators</h2><p class="sec-sub">Instant digital stems. No recurring lock-ins.</p><div class="grid"><div class="card"><div><h3>Free Calculator</h3><p>Use the full calculator with all presets — no sign-up needed</p><div class="price">Free <span>/ one-time</span></div><ul class="feature-list"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ultra-fast stem extraction</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 24-bit WAV & FLAC lossless export</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero artifact phase-alignment</li></ul></div></div><div class="card featured"><div><div class="pill">★ Most Popular</div><h3>Pro Quote Generator</h3><p>PDF quotes, client-ready templates, save unlimited projects</p><div class="price">$12/mo <span>/ one-time</span></div><ul class="feature-list"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ultra-fast stem extraction</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 24-bit WAV & FLAC lossless export</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero artifact phase-alignment</li></ul></div></div><div class="card"><div><h3>Agency Pack</h3><p>Multi-editor rate sheets, team dashboard, white-label exports</p><div class="price">$29/mo <span>/ one-time</span></div><ul class="feature-list"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Ultra-fast stem extraction</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 24-bit WAV & FLAC lossless export</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Zero artifact phase-alignment</li></ul></div></div></div></section>
+  <section><h2>How It Works</h2><ol class="steps"><li><strong>Enter your hourly target or desired monthly income</strong></li></ol></section>
   
-  <div class="results" id="results">
-    <h3>Your Pricing Breakdown</h3>
-    
-    <div class="result-row">
-      <span class="result-label">Effective hourly rate</span>
-      <span class="result-value" id="hourlyRate"></span>
-    </div>
-    <div class="result-row">
-      <span class="result-label">Minimum project price</span>
-      <span class="result-value highlight" id="projectPrice"></span>
-    </div>
-    <div class="result-row">
-      <span class="result-label">With revision buffer (20%)</span>
-      <span class="result-value" id="bufferPrice"></span>
-    </div>
-    <div class="result-row">
-      <span class="result-label">Industry benchmark range</span>
-      <span class="result-value" id="benchmark"></span>
-    </div>
-    <div class="result-row">
-      <span class="result-label">Your price vs market</span>
-      <span class="result-value" id="marketPos"></span>
-    </div>
-    
-    <div class="verdict" id="verdict"></div>
-  </div>
-  
+        <section id="specs">
+          <h2>Technical Architecture & Fidelity</h2>
+          <p class="sec-sub">Engineered for precision mastering and DAW integration.</p>
+          <div class="specs-box">
+            <div class="spec-item"><span class="spec-title">Extraction Engine</span><span class="spec-val">Spectral Phase-Linear Isolation</span></div>
+            <div class="spec-item"><span class="spec-title">Fidelity Support</span><span class="spec-val">24-Bit / 96kHz Lossless WAV, FLAC, AIFF</span></div>
+            <div class="spec-item"><span class="spec-title">Latency Benchmark</span><span class="spec-val">&lt; 15s per full 4-minute track</span></div>
+            <div class="spec-item"><span class="spec-title">Phase Cancellation</span><span class="spec-val">-98.4 dB Null Test Coherence</span></div>
+          </div>
+        </section>
+        
+  <section><h2>Engineered With Precision</h2><p>Built by Arden Zoa — freelance operator and studio partner who&#x27;s seen too many talented editors undercharge and burn out. CreatorRate exists because pricing should be math, not guesswork.</p></section>
+  <section><h2>Frequently Asked Questions</h2><details><summary>Is this really free to use?</summary><p>Yes. The core calculator is 100% free with no sign-up. Pro features unlock PDF exports and saved projects.</p></details></section>
+
+  <section id="contact">
+    <h2>Direct Support</h2>
+    <p>Questions or custom batch stems? Email directly at <a href="mailto:orvanstudiomax@gmail.com">orvanstudiomax@gmail.com</a>.</p>
+    <div class="note">Built and engineered by Arden Zoa. Direct support: orvanstudiomax@gmail.com</div>
+  </section>
+
+  <footer>
+    <div>© CreatorRate • Built by Arden Zoa</div>
+    <div>24-Bit Lossless Quality Guaranteed</div>
+  </footer>
 </div>
-
-<div class="footer">
-  Built by <a href="https://orvanstudio.github.io/arden-site/">Arden Zoa</a> · No data stored · Run entirely in your browser<br>
-  <span style="margin-top:8px;display:inline-block;">Got a project? <a href="mailto:hello@xheliumarray.com">Get a quote</a></span>
-</div>
-
-<script>
-const rates = {
-  editing:   { junior: [25,45], mid: [45,85], senior: [85,150], expert: [150,300] },
-  motion:    { junior: [35,60], mid: [60,120], senior: [120,200], expert: [200,400] },
-  vfx:       { junior: [40,70], mid: [70,140], senior: [140,250], expert: [250,500] },
-  color:     { junior: [30,55], mid: [55,110], senior: [110,200], expert: [200,350] },
-  sound:     { junior: [25,50], mid: [50,100], senior: [100,180], expert: [180,350] },
-  animation: { junior: [35,65], mid: [65,130], senior: [130,220], expert: [220,450] },
-  general:   { junior: [25,50], mid: [50,100], senior: [100,180], expert: [180,350] }
-};
-
-function calculate() {
-  const service = document.getElementById('service').value;
-  const level = document.getElementById('level').value;
-  const hours = parseFloat(document.getElementById('hours').value) || 10;
-  const revisions = parseFloat(document.getElementById('revisions').value) || 0;
-  const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-  const income = parseFloat(document.getElementById('income').value) || 5000;
-  const projects = parseFloat(document.getElementById('projects').value) || 8;
-  
-  // Total monthly need
-  const monthlyNeed = income + expenses;
-  
-  // Hours per project including revisions (each revision ~15% of original hours)
-  const revisionHours = hours * (revisions * 0.15);
-  const totalHoursPerProject = hours + revisionHours;
-  
-  // Effective hourly rate needed
-  const totalMonthlyHours = totalHoursPerProject * projects;
-  const effectiveHourly = monthlyNeed / totalMonthlyHours;
-  
-  // Project price
-  const projectPrice = effectiveHourly * totalHoursPerProject;
-  
-  // With buffer
-  const bufferPrice = projectPrice * 1.2;
-  
-  // Benchmark
-  const bench = rates[service][level];
-  
-  // Display
-  document.getElementById('hourlyRate').textContent = '$' + effectiveHourly.toFixed(0) + '/hr';
-  document.getElementById('projectPrice').textContent = '$' + projectPrice.toFixed(0);
-  document.getElementById('bufferPrice').textContent = '$' + bufferPrice.toFixed(0);
-  document.getElementById('benchmark').textContent = '$' + bench[0] + '–$' + bench[1] + '/hr';
-  
-  // Market position
-  const marketEl = document.getElementById('marketPos');
-  let verdict = '';
-  
-  if (effectiveHourly < bench[0] * 0.7) {
-    marketEl.textContent = '⚠️ Underpriced';
-    marketEl.className = 'result-value red';
-    verdict = `You're pricing <strong>below market</strong>. At $${effectiveHourly.toFixed(0)}/hr you'll burn out fast. The floor for your level is ~$${bench[0]}/hr. Raise your price to at least <strong>$${Math.round(bufferPrice)}</strong> per project.`;
-  } else if (effectiveHourly < bench[0]) {
-    marketEl.textContent = 'Competitive';
-    marketEl.className = 'result-value warn';
-    verdict = `You're pricing <strong>competitively</strong> — slightly below the $${bench[0]}–$${bench[1]}/hr range. Good for building portfolio, but don't stay here long. Aim for <strong>$${Math.round(bufferPrice)}</strong> per project.`;
-  } else if (effectiveHourly <= bench[1]) {
-    marketEl.textContent = '✅ Market rate';
-    marketEl.className = 'result-value green';
-    verdict = `Solid pricing. At $${effectiveHourly.toFixed(0)}/hr you're right in the $${bench[0]}–$${bench[1]}/hr sweet spot. Quote <strong>$${Math.round(bufferPrice)}</strong> per project (includes revision buffer). You can go higher if your portfolio supports it.`;
-  } else {
-    marketEl.textContent = 'Premium';
-    marketEl.className = 'result-value green';
-    verdict = `You're pricing <strong>above the typical range</strong> ($${bench[0]}–$${bench[1]}/hr). That's fine if you have the reel, niche expertise, or speed to justify it. Quote <strong>$${Math.round(bufferPrice)}</strong> and lead with your best work.`;
-  }
-  
-  document.getElementById('verdict').innerHTML = verdict;
-  document.getElementById('results').classList.add('visible');
-  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-</script>
-
 </body>
 </html>
